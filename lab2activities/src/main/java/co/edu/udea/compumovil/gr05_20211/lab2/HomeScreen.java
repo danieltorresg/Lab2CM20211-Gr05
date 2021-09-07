@@ -27,7 +27,7 @@ public class HomeScreen extends AppCompatActivity {
     SharedPreferences.Editor editor;
     FloatingActionButton addPoi;
 
-    List<PoiEntity> lista = new ArrayList<>();
+    List<PoiEntity> listOfPois = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +41,6 @@ public class HomeScreen extends AppCompatActivity {
         tName.setText(email);
         addPoi = findViewById(R.id.addPoi);
         onRestart();
-
-
-
-
-
-
 
         addPoi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,27 +86,27 @@ public class HomeScreen extends AppCompatActivity {
         //When BACK BUTTON is pressed, the activity on the stack is restarted
         //Do what you want on the refresh procedure here
 
-        metodo();
+        consultPois();
 
 
     }
 
-    public void metodo(){
+    public void consultPois(){
         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
         PoiDao poiDao = userDatabase.poiDao();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 //Register POI
-                lista = poiDao.getPois(preferences.getString("userId", ""));
+                listOfPois = poiDao.getPois(preferences.getString("userId", ""));
                 Log.d("name" , "----------------------------------------------");
-                if (lista.size() != 0){
-                    for (int i = 0 ; i < lista.size() ; i++){
-                        Log.d("name" , lista.get(i).getName());
-                        Log.d("desc" , lista.get(i).getDescription());
-                        Log.d("picture" , lista.get(i).getPicture());
-                        Log.d("rating" , lista.get(i).getRating().toString());
-                        Log.d("temperature" , lista.get(i).getTemperature());
+                if (listOfPois.size() != 0){
+                    for (int i = 0 ; i < listOfPois.size() ; i++){
+                        Log.d("name" , listOfPois.get(i).getName());
+                        Log.d("desc" , listOfPois.get(i).getDescription());
+                        Log.d("picture" , listOfPois.get(i).getPicture());
+                        Log.d("rating" , listOfPois.get(i).getRating().toString());
+                        Log.d("temperature" , listOfPois.get(i).getTemperature());
                     }
                 }
                 Log.d("name" , "----------------------------------------------");
