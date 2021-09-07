@@ -35,6 +35,9 @@ public class PoiEntity {
     @ColumnInfo(name = "userId")
     String userId;
 
+    @ColumnInfo(name = "temperature")
+    String temperature;
+
     public Integer getId() {
         return id;
     }
@@ -81,5 +84,13 @@ public class PoiEntity {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
     }
 }

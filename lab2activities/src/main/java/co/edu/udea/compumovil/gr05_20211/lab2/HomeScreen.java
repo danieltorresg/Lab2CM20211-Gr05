@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,12 +17,17 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeScreen extends AppCompatActivity {
 
     TextView tName;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     FloatingActionButton addPoi;
+
+    List<PoiEntity> lista = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,13 @@ public class HomeScreen extends AppCompatActivity {
         String email = getIntent().getStringExtra("email");
         tName.setText(email);
         addPoi = findViewById(R.id.addPoi);
+        onRestart();
+
+
+
+
+
+
 
         addPoi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,9 +86,38 @@ public class HomeScreen extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        //When BACK BUTTON is pressed, the activity on the stack is restarted
+        //Do what you want on the refresh procedure here
+
+        metodo();
 
 
+    }
 
+    public void metodo(){
+        UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+        PoiDao poiDao = userDatabase.poiDao();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //Register POI
+                lista = poiDao.getPois(preferences.getString("userId", ""));
+                Log.d("name" , "----------------------------------------------");
+                if (lista.size() != 0){
+                    for (int i = 0 ; i < lista.size() ; i++){
+                        Log.d("name" , lista.get(i).getName());
+                        Log.d("desc" , lista.get(i).getDescription());
+                        Log.d("picture" , lista.get(i).getPicture());
+                        Log.d("rating" , lista.get(i).getRating().toString());
+                        Log.d("temperature" , lista.get(i).getTemperature());
+                    }
+                }
+                Log.d("name" , "----------------------------------------------");
+            }
+        }).start();
 
-
+    }
 }

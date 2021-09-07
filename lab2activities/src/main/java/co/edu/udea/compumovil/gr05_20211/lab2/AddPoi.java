@@ -21,7 +21,7 @@ public class AddPoi extends AppCompatActivity {
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    EditText name, description, picture, rating;
+    EditText name, description, picture, rating, temperature;
     Button add;
 
     @Override
@@ -36,6 +36,7 @@ public class AddPoi extends AppCompatActivity {
         description = findViewById(R.id.descriptionPOI);
         picture = findViewById(R.id.picturePOI);
         rating = findViewById(R.id.ratingPOI);
+        temperature = findViewById(R.id.temperaturePOI);
         add = findViewById(R.id.btnAddPoi);
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +46,7 @@ public class AddPoi extends AppCompatActivity {
                 poiEntity.setName(name.getText().toString());
                 poiEntity.setDescription(description.getText().toString());
                 poiEntity.setPicture(picture.getText().toString());
+                poiEntity.setTemperature(temperature.getText().toString());
                 float ratingText = 0.0f;
                 if (!rating.getText().toString().isEmpty()){
                     ratingText = Float.parseFloat(rating.getText().toString());
@@ -104,7 +106,8 @@ public class AddPoi extends AppCompatActivity {
     private Boolean validateInput(PoiEntity poiEntity){
         if (poiEntity.getName().isEmpty() ||
                 poiEntity.getDescription().isEmpty() ||
-                poiEntity.getPicture().isEmpty()){
+                poiEntity.getPicture().isEmpty()||
+                poiEntity.getTemperature().isEmpty()){
             return false;
         }
         return true;
