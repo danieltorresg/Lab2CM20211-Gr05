@@ -3,10 +3,11 @@ package co.edu.udea.compumovil.gr05_20211.lab2;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "users")
+@Entity(tableName = "users", indices = {@Index(value = {"userId"},unique = true)})
 public class UserEntity {
 
     @PrimaryKey(autoGenerate = true)

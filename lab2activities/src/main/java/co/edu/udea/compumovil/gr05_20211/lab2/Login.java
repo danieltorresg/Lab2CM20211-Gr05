@@ -61,7 +61,8 @@ public class Login extends AppCompatActivity {
                                 });
                             } else {
                                 String email = userEntity.email;
-                                saveSession(email);
+                                String userId = userEntity.userId;
+                                saveSession(email, userId);
                                 startActivity(new Intent(
                                     Login.this, HomeScreen.class)
                                     .putExtra("email", email));
@@ -88,9 +89,10 @@ public class Login extends AppCompatActivity {
         return this.preferences.getBoolean("session", false);
     }
 
-    private void saveSession(String email){
+    private void saveSession(String email, String userId){
         editor.putBoolean("session", true);
         editor.putString("email", email);
+        editor.putString("userId", userId);
         editor.apply();
 
     }
