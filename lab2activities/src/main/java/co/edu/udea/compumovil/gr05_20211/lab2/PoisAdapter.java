@@ -10,47 +10,43 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class PoisAdapter extends RecyclerView.Adapter<PoisAdapter.PoisViewHolder>{
-    private List<PoiEntity> items;
+public class PoisAdapter extends RecyclerView.Adapter<PoisAdapter.PoisHolder>{
 
-    public static class PoisViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imagen;
-        public TextView nombre;
-        public TextView des;
-        public TextView tempe;
-        public TextView rating;
+    private List<PoiEntity> data;
 
-        public PoisViewHolder(View v){
-            super(v);
-            imagen = (ImageView) v.findViewById(R.id.imagen);
-            nombre = (TextView) v.findViewById(R.id.nombre);
-            des = (TextView) v.findViewById(R.id.des);
-            tempe = (TextView) v.findViewById(R.id.temp);
-            rating = (TextView) v.findViewById(R.id.rating);
+    public PoisAdapter(List<PoiEntity> data) {
+        this.data = data;
+    }
+
+    @Override
+    public PoisHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new PoisHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.poi_card, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(PoisHolder holder, int position) {
+        PoiEntity poiEntity = data.get(position);
+        holder.imagen.setImageResource(poiEntity.getPicture());
+        holder.nombre.setText(poiEntity.getName());
+        holder.des.setText(poiEntity.getDescription());
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
+    class PoisHolder extends RecyclerView.ViewHolder{
+
+        ImageView imagen;
+        TextView nombre;
+        TextView des;
+
+        public PoisHolder(View itemView) {
+            super(itemView);
+            imagen = (ImageView) itemView.findViewById(R.id.imagen);
+            nombre = (TextView) itemView.findViewById(R.id.nombre);
+            des = (TextView) itemView.findViewById(R.id.des);
         }
-    }
-
-    public PoisAdapter(List<PoiEntity> items){
-        this.items = items;
-    }
-
-    @Override
-    public int getItemCount(){
-        return items.size();
-    }
-
-    @Override
-    public PoisViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.por_card,viewGroup,false);
-        return new PoisViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(PoisViewHolder viewHolder,int i){
-        //viewHolder.imagen.setImageResource(items.get(i).getPicture());
-        viewHolder.nombre.setText(items.get(i).getName());
-        viewHolder.des.setText(items.get(i).getDescription());
-        viewHolder.tempe.setText(items.get(i).getTemperature());
-        viewHolder.rating.setText(items.get(i).getRating().toString());
     }
 }

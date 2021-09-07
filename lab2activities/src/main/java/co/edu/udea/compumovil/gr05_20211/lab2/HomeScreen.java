@@ -1,6 +1,8 @@
 package co.edu.udea.compumovil.gr05_20211.lab2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +28,9 @@ public class HomeScreen extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     FloatingActionButton addPoi;
+    private RecyclerView reciclador;
+    private GridLayoutManager glm;
+    private PoisAdapter adapter;
 
     List<PoiEntity> listOfPois = new ArrayList<>();
 
@@ -35,6 +40,12 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
         preferences = this.getSharedPreferences("sessions",Context.MODE_PRIVATE);
         editor = preferences.edit();
+
+        reciclador = (RecyclerView) findViewById(R.id.reciclador);
+        glm = new GridLayoutManager(this,2);
+        reciclador.setLayoutManager(glm);
+        adapter = new PoisAdapter(listOfPois);
+        reciclador.setAdapter(adapter);
 
         tName = findViewById(R.id.email);
         String email = getIntent().getStringExtra("email");
@@ -104,7 +115,7 @@ public class HomeScreen extends AppCompatActivity {
                     for (int i = 0 ; i < listOfPois.size() ; i++){
                         Log.d("name" , listOfPois.get(i).getName());
                         Log.d("desc" , listOfPois.get(i).getDescription());
-                        Log.d("picture" , listOfPois.get(i).getPicture());
+                        //Log.d("picture" , listOfPois.get(i).getPicture());
                         Log.d("rating" , listOfPois.get(i).getRating().toString());
                         Log.d("temperature" , listOfPois.get(i).getTemperature());
                     }
