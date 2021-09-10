@@ -26,7 +26,7 @@ public class PoisAdapter extends RecyclerView.Adapter<PoisAdapter.PoisHolder>{
     @Override
     public void onBindViewHolder(PoisHolder holder, int position) {
         PoiEntity poiEntity = data.get(position);
-        holder.imagen.setImageResource(poiEntity.getPicture());
+        //holder.imagen.setImageResource(poiEntity.getPicture());
         holder.nombre.setText(poiEntity.getName());
         holder.des.setText(poiEntity.getDescription());
     }

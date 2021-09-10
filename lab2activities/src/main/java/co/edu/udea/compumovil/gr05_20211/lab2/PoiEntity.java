@@ -27,7 +27,7 @@ public class PoiEntity {
     String description;
 
     @ColumnInfo(name = "picture")
-    int picture;
+    String picture;
 
     @ColumnInfo(name = "rating")
     Float rating;
@@ -37,6 +37,18 @@ public class PoiEntity {
 
     @ColumnInfo(name = "temperature")
     String temperature;
+
+    public PoiEntity() {
+    }
+
+    public PoiEntity(String name, String description, String picture, Float rating, String userId, String temperature) {
+        this.name = name;
+        this.description = description;
+        this.picture = picture;
+        this.rating = rating;
+        this.userId = userId;
+        this.temperature = temperature;
+    }
 
     public Integer getId() {
         return id;
@@ -62,11 +74,11 @@ public class PoiEntity {
         this.description = description;
     }
 
-    public int getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(int picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 

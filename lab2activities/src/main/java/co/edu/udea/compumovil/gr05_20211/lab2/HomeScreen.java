@@ -34,6 +34,7 @@ public class HomeScreen extends AppCompatActivity {
 
     List<PoiEntity> listOfPois = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +52,10 @@ public class HomeScreen extends AppCompatActivity {
         String email = getIntent().getStringExtra("email");
         tName.setText(email);
         addPoi = findViewById(R.id.addPoi);
-        onRestart();
+        //onRestart();
+        PoiEntity sitio1 = new PoiEntity("Medellin","Eterna Primavera","https://www.semana.com/resizer/2noyXlnQe0xA-d-VdDa6-acgYhk=/1200x675/filters:format(jpg):quality(50)//cloudfront-us-east-1.images.arcpublishing.com/semana/KI2722K53VBFVN7BR7OMCXSPWM.jpg",4.1f,"11"," ");
+        listOfPois.add(sitio1);
+
 
         addPoi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +101,7 @@ public class HomeScreen extends AppCompatActivity {
         //When BACK BUTTON is pressed, the activity on the stack is restarted
         //Do what you want on the refresh procedure here
 
-        consultPois();
+        //consultPois();
 
 
     }
