@@ -112,8 +112,17 @@ public class HomeScreen extends AppCompatActivity {
         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
         PoiDao poiDao = userDatabase.poiDao();
         listOfPois = new ArrayList<>();
-        PoiEntity sitio1 = new PoiEntity("Medellin","Eterna Primavera","https://cdn.forbes.co/2020/09/Medell%C3%ADn-foto-ProColombia.jpg",4.1f,"11","25");
-        listOfPois.add(sitio1);
+        PoiEntity poi1 = new PoiEntity("Medellin","Eterna Primavera","https://cdn.forbes.co/2020/09/Medell%C3%ADn-foto-ProColombia.jpg",4.1f,"11","25");
+        PoiEntity poi2 = new PoiEntity("Cali","Pachanguero","https://www.cali.gov.co/gobierno/info/principal/media/pubInt/thumbs/thpub_700x400_155052.jpg",4.1f,"11","25");
+        PoiEntity poi3 = new PoiEntity("Bogota","Capital de la republica de colombia","https://upload.wikimedia.org/wikipedia/commons/2/24/Bogot%C3%A1_Colpatria_Night.jpg",4.1f,"11","25");
+        PoiEntity poi4 = new PoiEntity("New York","Ciudad en la costa este de los estados unidos","https://www.aviatur.com/source/contenidos/blog/nueva-york-lugares-turisticos-capital-del-mundo.jpg",4.1f,"11","25");
+        PoiEntity poi5 = new PoiEntity("Los Angeles","Ciudad de la costa oeste de los estados unidos","https://wp-growpro.s3-eu-west-1.amazonaws.com/media/2019/02/Que-ver-en-Los-Angeles.jpg",4.1f,"11","25");
+        listOfPois.add(poi1);
+        listOfPois.add(poi2);
+        listOfPois.add(poi3);
+        listOfPois.add(poi4);
+        listOfPois.add(poi5);
+
         new Thread(new Runnable() {
             @Override
             public void run() {

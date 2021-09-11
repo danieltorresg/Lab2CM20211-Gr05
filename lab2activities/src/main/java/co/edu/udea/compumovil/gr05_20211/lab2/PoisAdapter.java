@@ -1,6 +1,7 @@
 package co.edu.udea.compumovil.gr05_20211.lab2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,35 @@ public class PoisAdapter extends RecyclerView.Adapter<PoisAdapter.PoisHolder>{
         };
         view.nombre.setText(poiEntity.getName());
         view.des.setText(poiEntity.getDescription());
+        Intent intent = new Intent(view.context, PoiDetails.class);
+        intent.putExtra("description",poiEntity.description);
+        intent.putExtra("temperature",poiEntity.temperature);
+        intent.putExtra("rating",poiEntity.rating);
+        intent.putExtra("name",poiEntity.name);
+        view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.context.startActivity(intent);
+            }
+        });
+        view.imagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.context.startActivity(intent);
+            }
+        });
+        view.nombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.context.startActivity(intent);
+            }
+        });
+        view.des.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -45,13 +75,14 @@ public class PoisAdapter extends RecyclerView.Adapter<PoisAdapter.PoisHolder>{
     }
 
     class PoisHolder extends RecyclerView.ViewHolder{
-
+        private Context context;
         ImageView imagen;
         TextView nombre;
         TextView des;
 
         public PoisHolder(View itemView) {
             super(itemView);
+            context= itemView.getContext();
             imagen = (ImageView) itemView.findViewById(R.id.imagen);
             nombre = (TextView) itemView.findViewById(R.id.nombre);
             des = (TextView) itemView.findViewById(R.id.des);
