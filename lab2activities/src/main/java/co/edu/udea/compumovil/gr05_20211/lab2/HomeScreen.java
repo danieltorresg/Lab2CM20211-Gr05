@@ -112,7 +112,7 @@ public class HomeScreen extends AppCompatActivity {
         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
         PoiDao poiDao = userDatabase.poiDao();
         listOfPois = new ArrayList<>();
-        PoiEntity sitio1 = new PoiEntity("Medellin","Eterna Primavera","https://www.semana.com/resizer/2noyXlnQe0xA-d-VdDa6-acgYhk=/1200x675/filters:format(jpg):quality(50)//cloudfront-us-east-1.images.arcpublishing.com/semana/KI2722K53VBFVN7BR7OMCXSPWM.jpg",4.1f,"11","25");
+        PoiEntity sitio1 = new PoiEntity("Medellin","Eterna Primavera","https://cdn.forbes.co/2020/09/Medell%C3%ADn-foto-ProColombia.jpg",4.1f,"11","25");
         listOfPois.add(sitio1);
         new Thread(new Runnable() {
             @Override
@@ -145,7 +145,7 @@ public class HomeScreen extends AppCompatActivity {
         reciclador = (RecyclerView) findViewById(R.id.reciclador);
         glm = new GridLayoutManager(this,2);
         reciclador.setLayoutManager(glm);
-        adapter = new PoisAdapter(listOfPois);
+        adapter = new PoisAdapter(listOfPois,this);
         reciclador.setAdapter(adapter);
 
     }

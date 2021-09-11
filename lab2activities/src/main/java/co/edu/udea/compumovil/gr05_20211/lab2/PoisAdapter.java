@@ -1,11 +1,13 @@
 package co.edu.udea.compumovil.gr05_20211.lab2;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -13,9 +15,12 @@ import java.util.List;
 public class PoisAdapter extends RecyclerView.Adapter<PoisAdapter.PoisHolder>{
 
     private List<PoiEntity> data;
+    private Context ctx;
 
-    public PoisAdapter(List<PoiEntity> data) {
+    public PoisAdapter(List<PoiEntity> data, Context ctx) {
+
         this.data = data;
+        this.ctx=ctx;
     }
 
     @Override
@@ -26,9 +31,12 @@ public class PoisAdapter extends RecyclerView.Adapter<PoisAdapter.PoisHolder>{
     @Override
     public void onBindViewHolder(PoisHolder holder, int position) {
         PoiEntity poiEntity = data.get(position);
-        //holder.imagen.setImageResource(poiEntity.getPicture());
-        holder.nombre.setText(poiEntity.getName());
-        holder.des.setText(poiEntity.getDescription());
+        PoisHolder view = (PoisHolder) holder;
+        if(!poiEntity.getPicture().isEmpty()){
+            Glide.with(ctx).load(poiEntity.getPicture()).into(view.imagen);
+        };
+        view.nombre.setText(poiEntity.getName());
+        view.des.setText(poiEntity.getDescription());
     }
 
     @Override
