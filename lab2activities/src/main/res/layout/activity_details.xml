@@ -66,14 +66,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Temperatura:" />
+        android:text="Temperatura promedio es: " />
 
     <TextView
         android:id="@+id/temperature"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Temperatura promedio es: "
+        android:hint="Temperatura"
         android:inputType="number"
         tools:ignore="MissingConstraints"></TextView>
 

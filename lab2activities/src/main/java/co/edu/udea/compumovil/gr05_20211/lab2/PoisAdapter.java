@@ -39,10 +39,10 @@ public class PoisAdapter extends RecyclerView.Adapter<PoisAdapter.PoisHolder>{
         view.nombre.setText(poiEntity.getName());
         view.des.setText(poiEntity.getDescription());
         Intent intent = new Intent(view.context, PoiDetails.class);
-        intent.putExtra("description",poiEntity.description);
-        intent.putExtra("temperature",poiEntity.temperature);
-        intent.putExtra("rating",poiEntity.rating);
-        intent.putExtra("name",poiEntity.name);
+        intent.putExtra("description",poiEntity.getDescription());
+        intent.putExtra("temperature",poiEntity.getTemperature());
+        intent.putExtra("rating",poiEntity.getRating());
+        intent.putExtra("name",poiEntity.getName());
         view.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
