@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nombre de la ciudad:" />
+        android:text="El nombre de la ciudad es: " />
 
     <TextView
         android:id="@+id/name"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Descripcion:" />
+        android:text="Descripción del sitio:" />
 
     <TextView
         android:id="@+id/description"
@@ -49,14 +49,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Ubicación:" />
+        android:text="Rating" />
 
     <TextView
         android:id="@+id/rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Ubicación"
+        android:hint="Rating "
         android:inputType="text"
         tools:ignore="MissingConstraints"></TextView>
 
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Temperatura"
+        android:hint="Temperatura promedio es: "
         android:inputType="number"
         tools:ignore="MissingConstraints"></TextView>
 
@@ -82,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Volver"
+        android:text="Cerrar"
         tools:ignore="MissingConstraints"></Button>
 
 </LinearLayout>

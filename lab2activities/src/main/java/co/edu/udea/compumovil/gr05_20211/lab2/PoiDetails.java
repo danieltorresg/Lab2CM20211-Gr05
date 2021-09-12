@@ -15,8 +15,8 @@ public class PoiDetails extends AppCompatActivity {
     Button buttonBack;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         name = findViewById(R.id.name);
         description = findViewById(R.id.description);
