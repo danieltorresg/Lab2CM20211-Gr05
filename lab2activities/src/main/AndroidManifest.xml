@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LabsCM20211">
-        <activity android:name=".AddPoi"></activity>
+        <activity android:name=".settingActivity"></activity>
+        <activity android:name=".AddPoi" />
         <activity android:name=".HomeScreen" />
         <activity android:name=".Login">
             <intent-filter>
@@ -21,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register"></activity>
-        <activity android:name=".PoiDetails"></activity>
+        <activity android:name=".Register" />
+        <activity android:name=".PoiDetails" />
     </application>
 
 </manifest>

@@ -84,6 +84,10 @@ public class HomeScreen extends AppCompatActivity {
             startActivity(i);
 
         }
+        if (id == R.id.settings){
+            startActivity(new Intent(
+                    HomeScreen.this, settingActivity.class));
+        }
         return true;
     }
 
